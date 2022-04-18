@@ -7,30 +7,26 @@ namespace StudentDatabaseLab
     {
         public static void Main(string[] args)
         {
-            bool runAgain = true;
-
-            while (runAgain)
+            while (true)
             {
-
                 string[] studentName = { "Aaron", "Clyde", "Kelly", "Meryl", "Simon", "Rose", "Jack", "David", "Popeye" };
                 string[] homeTown = { "Los Angeles, California", "Juneao, Alaska", "Duluth, Minnesota", "Akron, Ohio", "Talladega, Alabama", "Marfa, Texas", "Tombstone, Arizona", "Toronto, Ontario", "Victoria, Texas" };
-                string[] favoriteFood = { "Pizza", "Cornbread", "Plain white rice", "Lasanga", "Anything from Jimmy Johns", "Calzone", "Fish Sticks", "Ramen Noodle Soup", "Canned Spinach" };
-                int navChoice = 0;
+                string[] favoriteFood = { "pizza", "cornbread", "plain white rice", "lasanga", "anything from Jimmy Johns", "salmon", "fish sticks", "ramen noodle soup", "canned spinach" };
+                int navChoice;
 
                 while (true)
-                {
-                    Console.WriteLine();
-                    Console.WriteLine("Welcome to the Student Database. Would you like to begin by viewing a directory of all students or proceed to learning about our students? To view the directory, please type directory. To view the database, please type database.");
-                    string directoryOrDatabase = Console.ReadLine().ToLower();
+                { 
+                    Console.WriteLine("Welcome to the Student Database. Would you like to begin by viewing a directory of all students or proceed to learning about our students? To view the directory, please type directory. To learn about students, please type database.");
+                    string directoryOrDatabase = Console.ReadLine().ToLower().Trim();
                     Console.WriteLine();
 
-                    if (directoryOrDatabase.Contains("directory"))
+                    if (directoryOrDatabase.Contains("dir"))
                     {
                         Console.WriteLine("All Students in our database:");
 
                         for (int i = 0; i < studentName.Length; i++)
                         {
-                            Console.WriteLine(studentName[i]);
+                            Console.WriteLine($"Student {i+1}: {studentName[i]}");
                         }
 
                         Console.WriteLine();
@@ -40,6 +36,7 @@ namespace StudentDatabaseLab
                         if (studentChoice <= 0 || studentChoice > studentName.Length + 1)
                         {
                             Console.WriteLine("Sorry, that is not a valid input. Please choose a number 1-9.");
+                            Console.WriteLine();
                             continue;
                         }
                         else
@@ -49,7 +46,7 @@ namespace StudentDatabaseLab
                         }
 
                     }
-                    else if (directoryOrDatabase.Contains("database"))
+                    else if (directoryOrDatabase.Contains("data"))
                     {
                         Console.WriteLine();
                         Console.WriteLine("Which student would you like to learn more about? Enter a number 1-9.");
@@ -77,7 +74,7 @@ namespace StudentDatabaseLab
                 {
 
                     Console.WriteLine($"You have chosen {studentName[navChoice]}. What would you like to know? Please enter hometown or favorite food. ");
-                    string navigationChoice = Console.ReadLine().ToLower();
+                    string navigationChoice = Console.ReadLine().ToLower().Trim();
 
                     if (navigationChoice.Contains("town"))
                     {
@@ -97,7 +94,6 @@ namespace StudentDatabaseLab
                         Console.WriteLine("Sorry, I didn't quite get that. Please choose hometown or favorite food.");
                         Console.WriteLine();
                         continue;
-
                     }
                 }
 
@@ -111,7 +107,6 @@ namespace StudentDatabaseLab
                 else if (userContinue == "n")
                 {
                     Console.WriteLine("Goodbye!");
-                    runAgain = false;
                     break;
                 }
                 else
@@ -150,19 +145,4 @@ Try to use good grammar. Make your messages polite.
 Extra Challenges:
 1 Point: Provide an option where the user can see a list of all students.
 2 Points: Allow the user to search by student name
-1 Point: Category names: Allow uppercase and lowercase; allow portion of word such as "Food" instead of "Favorite Food"
-
- 
-   else if (navigationChoice.Contains("names"))
-                    {
-                        Console.WriteLine("All Students in our database:");
-
-                        for (int i = 0; i < studentName.Length; i++)
-                        {
-                            Console.WriteLine(studentName[i]);
-                        }
- 
- 
- 
- 
- */
+1 Point: Category names: Allow uppercase and lowercase; allow portion of word such as "Food" instead of "Favorite Food" */
